@@ -169,8 +169,8 @@ class MLP(object):
                     self.accumulated_momentum.append([np.copy(gparam[0]),
                                                       np.copy(gparam[1])] )
             else:
-                self.accumulated_momentum =  map(lambda x, y: [gamma * x[0] - (1-gamma) * y[0],
-                                                               gamma * x[1] - (1-gamma) * y[1]],
+                self.accumulated_momentum =  map(lambda x, y: [gamma * x[0] + (1-gamma) * y[0],
+                                                               gamma * x[1] + (1-gamma) * y[1]],
                                                  self.accumulated_momentum, self.gradParams )
 
             self.params = map(lambda x, y: [x[0] - learningRate*y[0], x[1] - learningRate*y[1]],
